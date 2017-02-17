@@ -1,0 +1,10 @@
+#Project in molecular life science
+#Carolina Savatier-Dupre Bañares
+
+mkdir Bioinformatics_projects
+cd Bioinformatics_projects
+mkdir Prot_structure_pred
+mkdir data
+mkdir general_scripts
+mkdir bin
+mkdir docs
