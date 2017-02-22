@@ -66,12 +66,21 @@ for i in wordlist:
 print (bigvectorlist)	
  
 #Create a list for the structure corresponding to each word
+import math
+wstructlist=list()
+alist= list()
+for i in range (0, len (structurelist)):
+	for j in range(0, (len(structurelist[i])-(window-1))):
+		wstructlist.append(structurelist[i][(math.floor(window/2)):(structurelist[i]-(window-1))])
+	
+print (wstructlist)
 
 
-# store it in a numpy array (because it's the input format).
+
+#Store it in a numpy array (because it's the input format).
 
 
 
 
- #For monday: X = np.array([[-1, -1], [-2, -1], [1, 1], [2, 1]])
+#For monday: X = np.array([[-1, -1], [-2, -1], [1, 1], [2, 1]])
 #y = np.array([1, 1, 2, 2])
