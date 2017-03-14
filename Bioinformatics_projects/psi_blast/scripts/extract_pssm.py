@@ -9,6 +9,7 @@ from sklearn.model_selection import cross_val_score
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
 from sklearn.metrics import accuracy_score
+from sklearn.externals import joblib
 
 f = open("//home/u2195/Desktop/Dropbox/Bioinformatics_projects/data/70aadata.txt","r")
 datalist = list()
@@ -115,7 +116,7 @@ Y = np.array(structvectorlist)
 #print (X, Y)
 
 #a) Cross-validation with the function corss_val_score
-clf=svm.LinearSVC(class_weight='balanced')
+'''clf=svm.LinearSVC(class_weight='balanced')
 scores=cross_val_score(clf, X, structvectorlist, cv=5)
 print (scores)
 print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
@@ -125,14 +126,17 @@ print (predicted)
 sys.exit()
 
 #b) First separate in groups  with the train_test_split function:
-X_train, X_test, y_train, y_test = train_test_split(X, structvectorlist, test_size=0.20, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, structvectorlist, test_size=0.20, random_state=42)'''
 clf=svm.LinearSVC(C=50, class_weight='balanced')
-clf.fit (X_train, y_train) 
-predicted=clf.predict(X_test)
-a=accuracy_score(y_test, predicted)
-print(a)
-print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
+clf.fit (X, Y) 
+#predicted=clf.predict(X)
+#a=accuracy_score(y_test, predicted)
+#print(a)
+#print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
 
+#Save the scikit-learn model so that it can be used in the future
+joblib.dump(clf, '/home/u2195/Desktop/Dropbox/Bioinformatics_projects/results/models/psiblast_SPmodel.pkl')
+sys.exit()
 #Confusion matrix: tn, fp, fn, tp
 labels=[1, 2]
 classrep=classification_report(y_test, predicted, labels=labels, digits=4)
