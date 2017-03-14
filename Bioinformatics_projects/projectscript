@@ -1,0 +1,13 @@
+#Project in molecular life science
+#Signal Peptide predictor
+#Carolina Savatier-Dupre Bañares
+
+mkdir Bioinformatics_projects
+cd Bioinformatics_projects
+mkdir Literature
+mkdir data
+mkdir general_scripts
+mkdir bin
+mkdir docs
+mkdir results
+mkdir psi_blast
