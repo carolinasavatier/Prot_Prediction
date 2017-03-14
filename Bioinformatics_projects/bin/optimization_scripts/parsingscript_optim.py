@@ -1,5 +1,5 @@
 #Create one big list with the whole raw data file (each line is an element of the list, so we have title1, sequence1, structure1, title2...). Then create a list with all the titles,titlelist, another with all the sequences, seqlist, and another with all the structures, structurelist)
-import sys, re
+import sys,re
 import numpy as np
 from sklearn import svm 
 from sklearn.metrics import confusion_matrix
@@ -7,8 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 from sklearn.model_selection import cross_val_score
 from sklearn.metrics import accuracy_score
-from sklearn.externals import joblib
-
+from sklearn.model_selection import GridSearchCV
 
 f = open("//home/u2195/Desktop/Dropbox/Bioinformatics_projects/data/70aadata.txt","r")
 datalist = list()
@@ -58,7 +57,7 @@ aa_dict = { 'A':[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 
 structure_dict = { 'G':1, 'S':2 , 'X':0}
 
-#1. Create windows. 
+#1. Create words. 
 windowlist = list()
 countwindowlist = 0
 for i in range (0, len (seqlist)):
@@ -76,8 +75,8 @@ for i in windowlist:
 		vectorlist.extend(aa_dict[j])
 	bigvectorlist.append(vectorlist)
 	countbigvectorlist += 1
-print (countbigvectorlist)
-sys.exit()
+#print (bigvectorlist)
+
 #2. Create a list for the structure corresponding to each word (wordstructlist):
 wordstructlist= list()
 n= int((window/2))
@@ -106,20 +105,7 @@ for i in wordstructlist:
 	countstructvectorlist+= 1
 #print (structvectorlist)
 
-#print (countwindowlist, countbigvectorlist, countwordstructlist, countstructvectorlist)
-
-#Save the outputs for the svm in two files, svm_input_window and svm_input_feature 
-'''
-with open('../results/svm_input_window.txt', 'w') as VL:
-	for i in range(0, len(bigvectorlist)):
-		VL.write('\n')
-		for j in bigvectorlist[i]:
-			VL.write(str(j)+',')
-
-with open('../results/svm_input_feature.txt', 'w') as VL:
-	for i in range(0, len(structvectorlist)):
-		VL.write(str(structvectorlist[i])+'\n')
-'''
+#print (countwindowlist, countbigvectorlist, countwordstructlist, countstructvectorlist) 
 
 #Store it in a numpy array (because it's the input format).OUTPUT1:
 X = np.array(bigvectorlist)
@@ -136,40 +122,37 @@ print(clf.score (X, Y))
 #There are two ways of continuing now, a) cross_val_score b)train_test_split
 #a) Cross-validation with the function corss_val_score
 #Crossvalidate, get the best parameter and then you run the program without running a cross-validation test
-#clf=svm.LinearSVC(class_weight='balanced')
-#scores=cross_val_score(clf, X, Y, cv=5)
+clf=svm.LinearSVC(class_weight='balanced')
+scores=cross_val_score(clf, X, Y, cv=5)
 #print (scores)
-#print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
-
-#clf.fit (X, Y)
-#predicted=clf.predict(X)
+print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
+clf.fit (X, Y)
+predicted=clf.predict(X)
 #print (predicted)
 
 #b) First separate in groups  with the train_test_split function:
 X_train, X_test, y_train, y_test = train_test_split(X, structvectorlist, test_size=0.20, random_state=42)
-clf=svm.LinearSVC(class_weight='balanced', C=16)
-clf.fit (X_train, y_train) 
+clf=svm.LinearSVC(class_weight='balanced')
+clf.fit (X_train, y_train) #building the model with the train window and associated features
 predicted=clf.predict(X_test)
 a=accuracy_score(y_test, predicted)
-print(a)
+print('Train_test_split score: ', a)
 #print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
 
 
-#Save the scikit-learn model so that it can be used in the future
-joblib.dump(clf, '/home/u2195/Desktop/Dropbox/Bioinformatics_projects/results/models/SPmodel.pkl') 
-
 #Confusion matrix: tn, fp, fn, tp
 labels=[1, 2]
-classrep=classification_report(y_test, predicted, labels=labels, digits=4)
+classrep=classification_report(y_test, predicted, labels=labels)
 print(classrep)
 confmat=confusion_matrix(y_test, predicted, labels=labels)
 print(confmat)
-sys.exit()
-with open ('//home/u2195/Desktop/Dropbox/Bioinformatics_projects/results/Optimization_results/' + 'classrep_confmat41' '.txt', 'w')as b:
-	b.write('Window size = 25'+'\n')
-	b.write(str(a)+'\n')
+
+#Write the output in a text documents
+with open ('//home/u2195/Desktop/Dropbox/Bioinformatics_projects/results/Optimization_results/' + 'windowsize15' '.txt', 'w')as b:
+	b.write("Accuracy: %0.2f (+/- %0.2f)"% (scores.mean(), scores.std() * 2))
+	b.write('svm.LinearSVC, class_weight=balanced' +'\n')
+	b.write('Train_test_split score: ' + str(a)+'\n')
 	b.write(str(classrep)+'\n')
 	b.write(str(confmat)+'\n')
-
 
 
