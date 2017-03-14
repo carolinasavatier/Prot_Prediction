@@ -1,0 +1,113 @@
+Using different window sizes performing cross-validation (5k) with Linear SVC, balanced weights and increasing window sizes.
+Printed:
+accuracy_score(y_test, predicted) 
+classification_report
+confusion_matrix
+
+Window size = 25
+0.929142857143
+             precision    recall  f1-score   support
+
+          1     0.9873    0.9306    0.9581      6094
+          2     0.6632    0.9194    0.7706       906
+
+avg / total     0.9453    0.9291    0.9338      7000
+
+[[5671  423]
+ [  73  833]]
+
+Window size = 27
+0.934428571429
+             precision    recall  f1-score   support
+
+          1     0.9889    0.9352    0.9613      6094
+          2     0.6807    0.9294    0.7858       906
+
+avg / total     0.9490    0.9344    0.9386      7000
+
+[[5699  395]
+ [  64  842]]
+
+Window size = 29
+0.938285714286
+             precision    recall  f1-score   support
+
+          1     0.9893    0.9393    0.9636      6094
+          2     0.6952    0.9316    0.7962       906
+
+avg / total     0.9512    0.9383    0.9420      7000
+
+[[5724  370]
+ [  62  844]]
+
+Window size = 31
+0.942714285714
+             precision    recall  f1-score   support
+
+          1     0.9892    0.9445    0.9663      6094
+          2     0.7138    0.9305    0.8079       906
+
+avg / total     0.9535    0.9427    0.9458      7000
+
+[[5756  338]
+ [  63  843]]
+
+Window size = 33
+0.943428571429
+             precision    recall  f1-score   support
+
+          1     0.9897    0.9449    0.9668      6094
+          2     0.7157    0.9338    0.8103       906
+
+avg / total     0.9542    0.9434    0.9465      7000
+
+[[5758  336]
+ [  60  846]]
+
+Window size = 35
+0.947428571429
+             precision    recall  f1-score   support
+
+          1     0.9894    0.9498    0.9692      6094
+          2     0.7339    0.9316    0.8210       906
+
+avg / total     0.9563    0.9474    0.9500      7000
+
+[[5788  306]
+ [  62  844]]
+
+Window size = 37
+0.946
+             precision    recall  f1-score   support
+
+          1     0.9904    0.9472    0.9683      6094
+          2     0.7253    0.9382    0.8181       906
+
+avg / total     0.9561    0.9460    0.9489      7000
+
+[[5772  322]
+ [  56  850]]
+
+Window size = 39
+0.946571428571
+             precision    recall  f1-score   support
+
+          1     0.9912    0.9470    0.9686      6094
+          2     0.7258    0.9437    0.8205       906
+
+avg / total     0.9569    0.9466    0.9494      7000
+
+[[5771  323]
+ [  51  855]]
+
+Window size = 41
+0.947857142857
+             precision    recall  f1-score   support
+
+          1     0.9904    0.9493    0.9694      6094
+          2     0.7334    0.9382    0.8232       906
+
+avg / total     0.9571    0.9479    0.9505      7000
+
+[[5785  309]
+ [  56  850]]

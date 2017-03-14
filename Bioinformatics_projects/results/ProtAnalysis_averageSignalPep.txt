@@ -1,0 +1,3 @@
+Proteins containing only G:3597
+Proteins containing G and S:2194
+Signal peptide average lenght: 23.476298997265268

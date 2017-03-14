@@ -1,0 +1,11 @@
+Accuracy: 0.90 (+/- 0.00)svm.LinearSVC, class_weight=balanced
+Train_test_split score: 0.895404198633
+             precision    recall  f1-score   support
+
+          1       0.99      0.89      0.94     70759
+          2       0.55      0.91      0.69     10315
+
+avg / total       0.93      0.90      0.91     81074
+
+[[63199  7560]
+ [  920  9395]]

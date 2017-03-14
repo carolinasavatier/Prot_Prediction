@@ -1,0 +1,11 @@
+Accuracy: 0.93 (+/- 0.05)C=1.0, kernel=sigmoid, class_weight=balanced
+Train_test_split score: 0.935714285714
+             precision    recall  f1-score   support
+
+          1       0.99      0.93      0.96      1231
+          2       0.66      0.95      0.78       169
+
+avg / total       0.95      0.94      0.94      1400
+
+[[1150   81]
+ [   9  160]]

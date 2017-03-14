@@ -1,0 +1,5 @@
+Using 70aadata
+Window size = 35
+Matthews correlation coefficient is 0.822754677278
+Cross-validation scores: 0.955867479093
+Duration time of random forest: 89.16809058189392

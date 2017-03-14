@@ -1,0 +1,13 @@
+Window size = 35
+Cross-validation scores for DecisionTreeClassifier: 0.885067963787
+Cross-validation scores for RandomForestClassifier: 0.923546394123
+             precision    recall  f1-score   support
+
+          1     0.9897    0.9611    0.9752     70759
+          2     0.7775    0.9314    0.8475     10315
+
+avg / total     0.9627    0.9574    0.9590     81074
+
+[[68010  2749]
+ [  708  9607]]
+Duration time of random forest: 296.6084644794464

@@ -1,0 +1,3 @@
+G count is 353863
+S count is 51507
+Percentage of S is %r .14.555633112249655
