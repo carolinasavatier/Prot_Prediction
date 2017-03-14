@@ -16,7 +16,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.externals import joblib
 
 #input_seq = input ('/home/u2195/Desktop/Dropbox/Bioinformatics_projects/data/predict.fasta')
-input_seq = open ('/home/u2195/Desktop/Dropbox/Bioinformatics_projects/data/predict.fasta', 'r')
+input_seq = open ('/home/u2195/Desktop/Dropbox/Bioinformatics_projects/data/predict2.fasta', 'r')
 
 input_seq = input_seq.read().splitlines()
 
@@ -90,7 +90,6 @@ for i in m:
 
 print (struct_prediction)
 
-sys.exit()
 
 #Save the prediction output in a file 
 
@@ -101,7 +100,6 @@ with open ('//home/u2195/Desktop/Dropbox/Bioinformatics_projects/results/' + 'SP
 		b.write(seqlist[i]+'\n')
 		b.write(''.join(struct_prediction)+'\n')
 		
-
 
 
 
