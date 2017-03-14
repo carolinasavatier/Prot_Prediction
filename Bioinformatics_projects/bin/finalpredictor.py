@@ -96,6 +96,7 @@ sys.exit()
 
 with open ('//home/u2195/Desktop/Dropbox/Bioinformatics_projects/results/' + 'SP_Prediction' '.fasta', 'w')as b:
 	for i in range(len(titlelist)):
+		b.write('Prediction of Signal Peptide by Carolina Savatier'+'\n')
 		b.write(titlelist[i]+'\n')
 		b.write(seqlist[i]+'\n')
 		b.write(''.join(struct_prediction)+'\n')
