@@ -3,6 +3,7 @@ import numpy as np
 import os
 import sys
 import time
+from datetime import datetime
 from sklearn import svm 
 from sklearn.svm import LinearSVC
 from sklearn.model_selection import train_test_split
@@ -120,10 +121,10 @@ for i in m:
 	e = structure_dict[i]
 	struct_prediction.append(e)
 
-print (struct_prediction)
+print ('Prediction output: ', struct_prediction)
 
 #Save the prediction output in a file 
-
+sys.exit()
 with open ('//home/u2195/Desktop/Dropbox/Bioinformatics_projects/results/' + 'SP_Prediction_psiblast' '.fasta', 'w')as b:
 	for i in range(len(titlelist)):
 		b.write('Prediction of Signal Peptide using psiblast by Carolina Savatier'+'\n')
